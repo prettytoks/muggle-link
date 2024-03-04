@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { TelegramShare } from 'react-share-kit'
 
 const Payment = () => {
   const [products, setProducts] = useState(null);
@@ -27,17 +28,19 @@ const Payment = () => {
   return (
     <div className="">
       {loading ? (
+
         <p>Loading...</p>
       ) : (
+
         <div className="flex flex-col md:flex-row h-full md:h-screen">
           {/* Left side (Blue part) */}
-          <div className="bg-blue-600 text-white p-20 flex flex-col justify-center items-center md:w-1/2">
+          <div className="bg-blue-600 text-white p-8 lg:p-20 flex flex-col justify-center items-center md:w-1/2">
             <div className="">
               <div className="flex justify-content">
                 <img
                   src={products?.merchant.image_url}
                   alt="Logo"
-                  className="h-10 w-10"
+                  className="h-8 w-8"
                 />
                 <p className="font-semibold mt-2 mb-12 ml-2 text-lg">
                   {products?.merchant.name}
@@ -49,7 +52,7 @@ const Payment = () => {
                 <img
                   src={products?.product.image_url}
                   alt={products?.product.name}
-                  className="h-16 w-16 rounded-full overflow-hidden mb-2 text-right"
+                  className="h-16 w-16 rounded-full mb-2 text-right"
                 />
               </div>
 
@@ -74,24 +77,22 @@ const Payment = () => {
               </div>
 
               {/* Social media links */}
+      
               <div className="flex justify-center mt-20 text-sm font-medium">
+                
+                <span className='mr-2'>Share</span> <TelegramShare url={'https://telegram.me/nextmuggle_bot'} size={'24px'} borderRadius={'50px'} />
+
                 <a
-                  href="https://github.com/prettytoks"
+                  href="https://github.com/prettytoks/muggle-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mx-4 hover:text-pink-500"
+                  className="ml-8 mr-4 hover:text-pink-500"
                 >
                   Github
                 </a>
 
-                <img
-                  className="h-6 w-6"
-                  src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/telegram/telegram.png"
-                  alt="Telegram"
-                />
-
                 <a
-                  href="https://telegram.me/nextmuggle_bot"
+                  href="https://telegram.me/nextmuggle_bot/nextmuggle"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mx-4 hover:text-pink-500"
@@ -104,7 +105,7 @@ const Payment = () => {
           </div>
 
           {/* Right side (Cream colored part) */}
-          <div className="bg-cream p-20 md:w-1/2 flex items-center justify-center">
+          <div className="bg-cream p-8 lg:p-20 md:w-1/2 flex items-center justify-center">
             {/* Pay with crypto form */}
             <div className="w-full max-w">
               <h2 className="text-purple-900 text-2xl font-semibold mb-2">
